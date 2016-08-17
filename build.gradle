@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        maven { url "http://repo.spring.io/libs-release" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.3.5.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+mainClassName = 'accessdeny.Elevator'
+
+
+jar {
+    baseName = 'elevator'
+    version =  '0.0.1'
+}
+
+repositories {
+    maven { url "https://repo.spring.io/libs-milestone" }
+    mavenCentral()
+}
+
+dependencies {
+   compile 'org.springframework.boot:spring-boot-starter'
+   compile("net.java.dev.jna:jna:4.2.0")
+   compile("net.java.dev.jna:jna-platform:4.2.0")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.5'
+}
